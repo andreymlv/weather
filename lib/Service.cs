@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using lib.Model;
 
 namespace lib;
@@ -12,10 +13,12 @@ public sealed class Service
         _uri = uri;
     }
 
-    public async Task<Root?> Weather()
+    public async Task<string> Weather()
     {
         using var client = new HttpClient();
         var json = await client.GetStringAsync(_uri);
-        return JsonSerializer.Deserialize<Root>(json);
+        var forecastNode = JsonNode.Parse(json);
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        return forecastNode!.ToJsonString(options);
     }
 }
