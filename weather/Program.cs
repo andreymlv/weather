@@ -3,11 +3,11 @@ namespace weather;
 
 using lib;
 
-internal static class Program
+public static class Program
 {
     private static readonly Uri Uri =
         new(
-            "https://api.openweathermap.org/data/2.5/weather?q=Tver&appid=9e8f95bba816372a0741d88a3c210322&units=metric");
+            "https://api.openweathermap.org/data/2.5/weather?q=Tver&appid=670829040b254ca98df582a6906f4b94&units=metric");
 
     private static void Main()
     {
